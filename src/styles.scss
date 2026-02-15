@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-main: #FFF8F3;
+  --bg-alt: #FDEFE6;
+
+  --surface: #FFFFFF;
+  --surface-muted: #FAEDE3;
+  --border: #E7D6CC;
+
+  --text-primary: #2B2B2B;
+  --text-secondary: #5F5B57;
+  --text-muted: #9A8F87;
+
+  --primary: #F97316;
+  --primary-hover: #EA580C;
+  --primary-soft: #FFE4D5;
+
+  --secondary: #3A7CA5;
+  --secondary-soft: #E0EFF7;
+
+  --accent: #F4A7B9;
+  --accent-soft: #FCE4EC;
+
+  --success: #4CAF82;
+  --warning: #F5A524;
+  --error: #E85D5D;
+  --info: #3A7CA5;
+}
+
+[data-theme="dark"] {
+  --bg-main: #0F172A;
+  --bg-alt: #141E33;
+
+  --surface: #1A2338;
+  --surface-muted: #202A40;
+  --border: #2C3650;
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+
+  --primary: #FB923C;
+  --primary-hover: #F97316;
+  --primary-soft: rgba(251,146,60,0.15);
+
+  --secondary: #4FA3C7;
+  --secondary-soft: rgba(79,163,199,0.15);
+
+  --accent: #F2A2B8;
+  --accent-soft: rgba(242,162,184,0.18);
+
+  --success: #5FCF9A;
+  --warning: #FBBF24;
+  --error: #F87171;
+  --info: #4FA3C7;
+}
