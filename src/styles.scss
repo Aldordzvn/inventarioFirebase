@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'normalize.css';
+
 :root {
   --bg-main: #FFF8F3;
   --bg-alt: #FDEFE6;
@@ -54,3 +55,24 @@
   --error: #F87171;
   --info: #4FA3C7;
 }
+
+html, body{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    background-color: var(--bg-main);
+}
+
+a{
+    text-decoration: none;
+}
+
+
