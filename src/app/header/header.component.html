@@ -1,0 +1,23 @@
+<header>
+    <div class="header">
+        <a href="#" class="logo">Inventario</a>
+        <div class="desktop__elements">
+            <a href="#">Productos</a>
+            <a href="#">About</a>
+        </div>
+        <button class="themeBtn"> <fa-icon class="icon theme" [icon]="darkIcon"></fa-icon> </button>
+        <button class="menuBtn" (click)="openModal()"> <fa-icon class="icon menu" [icon]="menuIcon"></fa-icon> </button>
+    </div>
+
+    <div class="modal__menu" [class.fadeInRight]="openMenuModalBoolean" [class.fadeOutRight]="!openMenuModalBoolean && hasInteracted">
+        <div class="elements__menu">
+            <div class="back__container">
+                <button class="backBtn" (click)="openModal()"> <fa-icon class="icon salir" [icon]="backIcon"></fa-icon> Salir</button>
+            </div>
+            <div class="links__opc">
+                <a href="#">Productos</a>
+                <a href="#">About</a>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import './app/styles/fonts/roboto.css';
 
 :root {
   --bg-main: #FFF8F3;
@@ -69,10 +70,17 @@ body{
     font-size: 1.6rem;
     color: var(--text-primary);
     background-color: var(--bg-main);
+    font-family: 'roboto';
+    font-weight: normal;
 }
 
 a{
     text-decoration: none;
+    color: var(--text-primary);
+}
+
+button{
+    cursor: pointer;
 }
 
 
