@@ -1,13 +1,13 @@
 @font-face{
     font-family: 'roboto';
-    src: url('/fonts/Inter/InterNormal.ttf');
+    src: url('/fonts/Roboto/robotoNormal.ttf');
     font-weight: 100 900;
     font-style: normal;
 }
 
 @font-face{
     font-family: 'roboto';
-    src: url('/fonts/Inter/InterItalic.ttf');
+    src: url('/fonts/Roboto/robotoItalic.ttf');
     font-weight: 100 900;
     font-style: italic;
 }

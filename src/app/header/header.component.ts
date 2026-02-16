@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowLeft, faBars, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

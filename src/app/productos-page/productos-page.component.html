@@ -1,0 +1,95 @@
+<main>
+    <div class="elements__container">
+        <div class="title__container">
+            <button (click)="openFormModal()"><fa-icon class="icon add" [icon]="addIcon"></fa-icon> Añadir</button>
+        </div>
+        <div class="table__container">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Options</th>
+                </tr>
+                @for (producto of productos$ | async; track $index;) {
+                <tr>
+                    <td class="idTd">{{producto.id}}</td>
+                    <td class="nombreProducto"> {{producto.nombre}} </td>
+                    <td class="categoriaProducto"> {{producto.categoria}} </td>
+                    <td class="precioProducto"> {{producto.precio | currency : 'MXN' : 'symbol-narrow': '1.2-2'}} </td>
+                    <td class="stockProducto"> {{producto.stock}} </td>
+                    <td class="opcProducto">
+                        <div class="btns__container">
+                            <button class="btnOpc editBtn" (click)="openEditModal(producto.id!)"> <fa-icon class="icon edit" [icon]="editIcon"></fa-icon>
+                            </button>
+                            <button class="btnOpc deleteBtn" (click)="openDeleteModal(producto.id!)"> <fa-icon class="icon delete"
+                                    [icon]="deleteIcon"></fa-icon></button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <article class="modal__form" [class.active]="openFormBoolean">
+        <div class="form__elements">
+            <form [formGroup]="productoForm" (submit)="enviarDatos()">
+                <div class="label__container">
+                    <label for="nombre">Producto:</label>
+                    @if(productoForm.get('nombre')?.invalid && (productoForm.get('nombre')?.touched || submitted)){
+                    <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
+                    }
+                    <input type="text" placeholder="Nombre del producto" formControlName="nombre"
+                        [class.errorInput]="productoForm.get('nombre')?.invalid && (productoForm.get('nombre')?.touched || submitted)">
+                </div>
+                <div class="label__container">
+                    <label for="">Elige una categoria:</label>
+                    @if(productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched || submitted)){
+                    <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
+                    }
+                    <select name="" id="" formControlName="categoria" [class.errorInput]="productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched || submitted)">
+                        <option value="" selected disabled>Categoria</option>
+                        <option value="Men's Clothes">Men's Clothes</option>
+                        <option value="Women's Clothes">Women's Clothes</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Jewelery">Jewelery</option>
+                    </select>
+                </div>
+                <div class="label__container">
+                    <label for="">Precio:</label>
+                    @if(productoForm.get('precio')?.invalid && (productoForm.get('precio')?.touched || submitted)){
+                    <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
+                    }
+                    <input type="number" formControlName="precio" [class.errorInput]="productoForm.get('precio')?.invalid && (productoForm.get('precio')?.touched || submitted)">
+                </div>
+                <div class="label__container">
+                    <label for="">Stock:</label>
+                    @if(productoForm.get('stock')?.invalid && (productoForm.get('stock')?.touched || submitted)){
+                    <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
+                    }
+                    <input type="number" formControlName="stock" [class.errorInput]="productoForm.get('stock')?.invalid && (productoForm.get('stock')?.touched || submitted)">
+                </div>
+                <div class="btnsForm__container">
+                    <button class="formBtn cancel" type="button" (click)="cancelarForm()">Cancelar</button>
+                    <button class="formBtn enviar" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </article>
+
+    <article class="modal__delete" [class.openDeleteModal]="deleteBoolean">
+        <div class="delete__items">
+            <fa-icon class="icon deleteModal" [icon]="deleteIcon"></fa-icon>
+            <p>¿Seguro que desea borrar el registro?</p>
+            <div class="btnsDelete__container">
+                <button class="btn cancelar" (click)="closeDeleteModal()">Cancelar</button>
+                <button class="btn eliminar" (click)="deleteProduct(this.id!)">Eliminar</button>
+            </div>
+        </div>
+    </article>
+</main>
+
+<!-- <pre> {{productos$ | async | json}} </pre> -->

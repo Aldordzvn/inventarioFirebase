@@ -23,10 +23,15 @@
   --accent: #F4A7B9;
   --accent-soft: #FCE4EC;
 
-  --success: #4CAF82;
+  --success: #43D995;
   --warning: #F5A524;
   --error: #E85D5D;
   --info: #3A7CA5;
+  --text-error: #520E0E;
+  --cancel-selected: #520E0E;
+
+
+
 }
 
 [data-theme="dark"] {
@@ -55,6 +60,8 @@
   --warning: #FBBF24;
   --error: #F87171;
   --info: #4FA3C7;
+  --text-error: #520E0E;
+  --cancel-selected: #520E0E;
 }
 
 html, body{

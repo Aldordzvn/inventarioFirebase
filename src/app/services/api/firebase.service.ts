@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Producto } from '../../models/Producto.model';
 
 @Injectable({
@@ -11,20 +11,38 @@ export class FirebaseService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Producto[]>{
-    return this.http.get<Producto[]>(this.apiUrl);
+    let getProducts = `${this.apiUrl}.json`;
+    return this.http.get<{[key: string]: Producto}>(getProducts).pipe(
+      map(response => this.mapFireBaseoBject(response))
+    );
+  }
+
+  getProductById(id:string): Observable<Producto | null>{
+    let urlProductId = `${this.apiUrl}/${id}.json`;
+    return this.http.get<Producto | null>(urlProductId);
   }
 
   addProduct(product: Producto): Observable<Producto>{
-    return this.http.post<Producto>(this.apiUrl, product);
+    let postProduct = `${this.apiUrl}.json`;
+    return this.http.post<Producto>(postProduct, product);
   }
 
-  updateProduct(id: number, product: Producto): Observable<Producto>{
-    const apiUpdate = `${this.apiUrl}/${id}`;
+  updateProduct(id: string, product: Producto): Observable<Producto>{
+    const apiUpdate = `${this.apiUrl}/${id}.json`;
     return this.http.put<Producto>(apiUpdate, product);
   }
 
-  deleteProduct(id: number): Observable<Producto>{
-    const apiDelete = `${this.apiUrl}/${id}`
+  deleteProduct(id: string): Observable<Producto>{
+    const apiDelete = `${this.apiUrl}/${id}.json`
     return this.http.delete<Producto>(apiDelete);
+  }
+
+  private mapFireBaseoBject<T>(data: {[key:string]: T} | null): (T & {id:string})[]{
+    if(!data) return [];
+
+    return Object.keys(data).map(key => ({
+      id: key,
+      ...data[key]
+    }));
   }
 }
