@@ -13,6 +13,7 @@
         <div class="elements__menu">
             <div class="back__container">
                 <button class="backBtn" (click)="openModal()"> <fa-icon class="icon salir" [icon]="backIcon"></fa-icon> Salir</button>
+                <button class="themeBtnMobile" (click)="toggleTheme()"> <fa-icon class="icon theme" [icon]="darkIcon"> Hola</fa-icon> </button>
             </div>
             <div class="links__opc">
                 <a [routerLink]="['/productos']" (click)="openModal()">Productos</a>

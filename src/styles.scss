@@ -1,7 +1,7 @@
 @import 'normalize.css';
 @import './app/styles/fonts/roboto.css';
 
-:root {
+html[data-theme= 'light'] {
   --bg-main: #FFF8F3;
   --bg-alt: #FDEFE6;
 
@@ -12,6 +12,8 @@
   --text-primary: #2B2B2B;
   --text-secondary: #5F5B57;
   --text-muted: #9A8F87;
+
+  --tableBtn-hover: #0855b3;
 
   --primary: #F97316;
   --primary-hover: #EA580C;
@@ -34,7 +36,7 @@
 
 }
 
-[data-theme="dark"] {
+html[data-theme='dark'] {
   --bg-main: #0F172A;
   --bg-alt: #141E33;
 
@@ -46,21 +48,23 @@
   --text-secondary: #CBD5E1;
   --text-muted: #94A3B8;
 
+  --tableBtn-hover: #7da8dd;
+
   --primary: #FB923C;
   --primary-hover: #F97316;
   --primary-soft: rgba(251,146,60,0.15);
 
   --secondary: #4FA3C7;
-  --secondary-soft: rgba(79,163,199,0.15);
+  --secondary-soft: rgb(21, 45, 56);
 
-  --accent: #F2A2B8;
+  --accent: #cf476b;
   --accent-soft: rgba(242,162,184,0.18);
 
   --success: #5FCF9A;
   --warning: #FBBF24;
   --error: #F87171;
   --info: #4FA3C7;
-  --text-error: #520E0E;
+  --text-error: #F87171;
   --cancel-selected: #520E0E;
 }
 

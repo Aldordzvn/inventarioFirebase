@@ -34,7 +34,6 @@ main{
         justify-content: center;
         gap: 1rem;
         font-weight: 500;
-
         &:hover {
             background-color: var(--secondary-soft);
             color: var(--secondary);
@@ -84,9 +83,9 @@ tr:hover {
 .btnOpc {
     border: 1px solid transparent;
     background-color: transparent;
-
+    color: var(--text-primary);
     &:hover {
-        color: var(--text-secondary);
+        color: var(--tableBtn-hover);
     }
 }
 
