@@ -5,7 +5,7 @@
             <a [routerLink]="['/productos']">Productos</a>
             <a [routerLink]="['/about']">About</a>
         </div>
-        <button class="themeBtn"> <fa-icon class="icon theme" [icon]="darkIcon"></fa-icon> </button>
+        <button class="themeBtn" (click)="toggleTheme()"> <fa-icon class="icon theme" [icon]="darkIcon"></fa-icon> </button>
         <button class="menuBtn" (click)="openModal()"> <fa-icon class="icon menu" [icon]="menuIcon"></fa-icon> </button>
     </div>
 
