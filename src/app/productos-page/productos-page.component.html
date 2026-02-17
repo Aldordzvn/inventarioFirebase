@@ -13,7 +13,7 @@
                     <th>Stock</th>
                     <th>Options</th>
                 </tr>
-                @for (producto of productos$ | async; track $index;) {
+                @for (producto of (productos$ | async) ?? [] | paginate: {itemsPerPage:6, currentPage: p} ; track $index) {
                 <tr>
                     <td class="idTd">{{producto.id}}</td>
                     <td class="nombreProducto"> {{producto.nombre}} </td>
@@ -22,16 +22,22 @@
                     <td class="stockProducto"> {{producto.stock}} </td>
                     <td class="opcProducto">
                         <div class="btns__container">
-                            <button class="btnOpc editBtn" (click)="openEditModal(producto.id!)"> <fa-icon class="icon edit" [icon]="editIcon"></fa-icon>
+                            <button class="btnOpc editBtn" (click)="openEditModal(producto.id!)"> <fa-icon
+                                    class="icon edit" [icon]="editIcon"></fa-icon>
                             </button>
-                            <button class="btnOpc deleteBtn" (click)="openDeleteModal(producto.id!)"> <fa-icon class="icon delete"
-                                    [icon]="deleteIcon"></fa-icon></button>
+                            <button class="btnOpc deleteBtn" (click)="openDeleteModal(producto.id!)"> <fa-icon
+                                    class="icon delete" [icon]="deleteIcon"></fa-icon></button>
                         </div>
                     </td>
                 </tr>
                 }
             </table>
         </div>
+        <article class="pagination__container">
+            <pagination-controls (pageChange)="p = $event" class="my-pagination" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            <!-- <pagination-controls id="mobilePagination" (pageChange)="pageMobile = $event" class="my-pagination"
+                previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls> -->
+        </article>
     </div>
 
     <article class="modal__form" [class.active]="openFormBoolean">
@@ -47,10 +53,12 @@
                 </div>
                 <div class="label__container">
                     <label for="">Elige una categoria:</label>
-                    @if(productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched || submitted)){
+                    @if(productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched ||
+                    submitted)){
                     <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
                     }
-                    <select name="" id="" formControlName="categoria" [class.errorInput]="productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched || submitted)">
+                    <select name="" id="" formControlName="categoria"
+                        [class.errorInput]="productoForm.get('categoria')?.invalid && (productoForm.get('categoria')?.touched || submitted)">
                         <option value="" selected disabled>Categoria</option>
                         <option value="Men's Clothes">Men's Clothes</option>
                         <option value="Women's Clothes">Women's Clothes</option>
@@ -63,14 +71,16 @@
                     @if(productoForm.get('precio')?.invalid && (productoForm.get('precio')?.touched || submitted)){
                     <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
                     }
-                    <input type="number" formControlName="precio" [class.errorInput]="productoForm.get('precio')?.invalid && (productoForm.get('precio')?.touched || submitted)">
+                    <input type="number" formControlName="precio"
+                        [class.errorInput]="productoForm.get('precio')?.invalid && (productoForm.get('precio')?.touched || submitted)">
                 </div>
                 <div class="label__container">
                     <label for="">Stock:</label>
                     @if(productoForm.get('stock')?.invalid && (productoForm.get('stock')?.touched || submitted)){
                     <span class="errorSpan">Este campo es obligatorio, Ingrese el campo correctamente.</span>
                     }
-                    <input type="number" formControlName="stock" [class.errorInput]="productoForm.get('stock')?.invalid && (productoForm.get('stock')?.touched || submitted)">
+                    <input type="number" formControlName="stock"
+                        [class.errorInput]="productoForm.get('stock')?.invalid && (productoForm.get('stock')?.touched || submitted)">
                 </div>
                 <div class="btnsForm__container">
                     <button class="formBtn cancel" type="button" (click)="cancelarForm()">Cancelar</button>

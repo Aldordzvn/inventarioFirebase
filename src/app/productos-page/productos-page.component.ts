@@ -7,10 +7,11 @@ import { FirebaseService } from '../services/api/firebase.service';
 import { ProductosFacadeService } from '../services/facade/productos-facade.service';
 import { Observable, take, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-productos-page',
-  imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule],
+  imports: [FontAwesomeModule, ReactiveFormsModule, CommonModule, NgxPaginationModule],
   templateUrl: './productos-page.component.html',
   styleUrl: './productos-page.component.scss'
 })
@@ -25,6 +26,7 @@ export class ProductosPageComponent {
   submitted : boolean = false;
   id: string | null = '';
   deleteBoolean: boolean = false;
+  p: number = 1;
 
   constructor(private facadeProducto: ProductosFacadeService) {
     this.productos$ = facadeProducto.productos$;

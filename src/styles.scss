@@ -67,6 +67,7 @@
 html, body{
     box-sizing: border-box;
     font-size: 62.5%;
+    height: 100%;
 }
 
 *, *:before, *:after{
@@ -79,6 +80,7 @@ body{
     background-color: var(--bg-main);
     font-family: 'roboto';
     font-weight: normal;
+    min-height: 100vh;
 }
 
 a{

@@ -1,9 +1,9 @@
 <header>
     <div class="header">
-        <a href="#" class="logo">Inventario</a>
+        <a [routerLink]="['']" class="logo">Inventario</a>
         <div class="desktop__elements">
-            <a href="#">Productos</a>
-            <a href="#">About</a>
+            <a [routerLink]="['/productos']">Productos</a>
+            <a [routerLink]="['/about']">About</a>
         </div>
         <button class="themeBtn"> <fa-icon class="icon theme" [icon]="darkIcon"></fa-icon> </button>
         <button class="menuBtn" (click)="openModal()"> <fa-icon class="icon menu" [icon]="menuIcon"></fa-icon> </button>
@@ -15,8 +15,8 @@
                 <button class="backBtn" (click)="openModal()"> <fa-icon class="icon salir" [icon]="backIcon"></fa-icon> Salir</button>
             </div>
             <div class="links__opc">
-                <a href="#">Productos</a>
-                <a href="#">About</a>
+                <a [routerLink]="['/productos']" (click)="openModal()">Productos</a>
+                <a [routerLink]="['/about']" (click)="openModal()">About</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,26 @@
+:host{
+    display: flex;
+    flex: 1
+}
+
+.about__container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 100%;
+}
+
+.socials__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: auto;
+}
+
+.icon{
+    font-size: 5rem;
+    &:hover{
+        color: var(--primary);
+    }
+}
